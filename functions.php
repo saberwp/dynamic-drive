@@ -1,5 +1,12 @@
 <?php
 
+add_action( 'pre_get_posts', function( $query ) {
+
+	// var_dump( $query->tax_query );
+
+});
+
+
 add_filter( 'template_include', function( $template ) {
 	return $template;
 });
