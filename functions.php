@@ -1,6 +1,18 @@
 <?php
+
+add_action( 'pre_get_posts', function( $query ) {
+
+	// var_dump( $query->tax_query );
+
+});
+
+
+add_filter( 'template_include', function( $template ) {
+	return $template;
+});
+
 /**
- * Twenty Twenty-Two functions and definitions
+ * Dynamic Drive theme functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *

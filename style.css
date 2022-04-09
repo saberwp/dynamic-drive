@@ -142,3 +142,11 @@ body > .is-root-container > .wp-block-template-part > .wp-block-cover,
 .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
 	padding: 0;
 }
+
+header .wp-block-social-links {
+	align-items: flex-start;
+}
+
+header .wp-block-search__button {
+	margin: 0;
+}
