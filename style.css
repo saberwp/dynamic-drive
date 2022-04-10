@@ -150,3 +150,48 @@ header .wp-block-social-links {
 header .wp-block-search__button {
 	margin: 0;
 }
+
+/* Center the mobile nav button. */
+header .wp-block-navigation {
+
+	justify-content: center;
+
+}
+
+/* Hide search in header on mobile. */
+#search-container {
+	display: none;
+}
+
+header .wp-block-navigation button.wp-block-navigation__responsive-container-open {
+
+	margin: 12px 0;
+
+}
+
+header .wp-block-spacer {
+	height: 20px;
+}
+
+/* Ensure small amount of margin before edge of screen. */
+header .wp-block-columns {
+	margin-right: 12px;
+	margin-left: 12px;
+}
+
+/* Even absolute columns are not absolute on mobile. */
+header .is-style-absolute-columns {
+	position: relative;
+}
+
+@media screen and (min-width: 600px) {
+
+	#search-container {
+		display: block;
+	}
+
+	header .wp-block-spacer {
+		height: 50px;
+	}
+
+}
