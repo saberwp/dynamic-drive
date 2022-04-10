@@ -1,12 +1,5 @@
 <?php
 
-add_action( 'pre_get_posts', function( $query ) {
-
-	// var_dump( $query->tax_query );
-
-});
-
-
 add_filter( 'template_include', function( $template ) {
 	return $template;
 });
@@ -16,9 +9,8 @@ add_filter( 'template_include', function( $template ) {
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package WordPress
- * @subpackage Twenty_Twenty_Two
- * @since Twenty Twenty-Two 1.0
+ * @package Dynamic Drive
+ * @since Dynamic Drive 1.0.0
  */
 
 
