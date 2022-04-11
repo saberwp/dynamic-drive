@@ -48,12 +48,6 @@ a:active {
 	text-decoration: none;
 }
 
-.wp-block-navigation .wp-block-navigation-item a:hover,
-.wp-block-navigation .wp-block-navigation-item a:focus {
-	text-decoration: underline;
-	text-decoration-style: solid;
-}
-
 /*
  * Search and File Block button styles.
  * Necessary until the following issues are resolved in Gutenberg:
@@ -132,11 +126,6 @@ body > .is-root-container > .wp-block-template-part > .wp-block-cover,
 	padding-bottom: var(--wp--custom--spacing--large);
 	padding-right: var(--wp--custom--spacing--outer);
 	padding-left: var(--wp--custom--spacing--outer);
-}
-
-
-.wp-block-navigation-item:hover {
-	color: #000;
 }
 
 .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
