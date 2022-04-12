@@ -48,6 +48,10 @@ a:active {
 	text-decoration: none;
 }
 
+h5 {
+	margin: 8px 0;
+}
+
 /*
  * Search and File Block button styles.
  * Necessary until the following issues are resolved in Gutenberg:
