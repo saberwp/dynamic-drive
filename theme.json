@@ -9,6 +9,13 @@
 				"post"
 			]
 		},
+		{
+			"name": "single-doc-page",
+			"title": "Doc Page Single",
+			"postTypes": [
+				"doc-page"
+			]
+		}
 	],
 	"settings": {
 		"appearanceTools": true,
