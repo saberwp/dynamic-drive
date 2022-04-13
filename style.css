@@ -177,6 +177,47 @@ header .is-style-absolute-columns {
 	position: relative;
 }
 
+.wp-block-image .alignright {
+
+	display: flex;
+	justify-content: center;
+	float: none;
+	margin: 0;
+
+}
+
+/* Hide items on mobile view using this class. */
+.mobile-hide {
+	display: none;
+}
+
+.mobile-center {
+	justify-content: center;
+}
+
+/* This will center images contained in the .mobile-center column. */
+.mobile-center .wp-block-image {
+
+	display: flex;
+	justify-content: center;
+	justify-items: center;
+
+}
+
+.mobile-center .wp-block-buttons {
+
+	justify-content: center;
+	justify-items: center;
+
+}
+
+
+#header-intro-text {
+	text-align: center;
+}
+
+/* Screen Size 600+ */
+
 @media screen and (min-width: 600px) {
 
 	#search-container {
