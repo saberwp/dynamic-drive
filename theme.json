@@ -15,6 +15,13 @@
 			"postTypes": [
 				"doc-page"
 			]
+		},
+		{
+			"name": "single-demo",
+			"title": "Demo Single",
+			"postTypes": [
+				"demo"
+			]
 		}
 	],
 	"settings": {
