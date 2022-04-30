@@ -8,20 +8,18 @@
 				"page",
 				"post"
 			]
+		}
+	],
+	"templateParts": [
+		{
+			"name": "header",
+			"title": "Header",
+			"area": "header"
 		},
 		{
-			"name": "single-doc-page",
-			"title": "Doc Page Single",
-			"postTypes": [
-				"doc-page"
-			]
-		},
-		{
-			"name": "single-demo",
-			"title": "Demo Single",
-			"postTypes": [
-				"demo"
-			]
+			"name": "footer",
+			"title": "Footer",
+			"area": "footer"
 		}
 	],
 	"settings": {
@@ -323,22 +321,5 @@
 			"lineHeight": "var(--wp--custom--typography--line-height--normal)",
 			"fontSize": "var(--wp--preset--font-size--medium)"
 		}
-	},
-	"templateParts": [
-		{
-			"name": "header",
-			"title": "Header",
-			"area": "header"
-		},
-		{
-			"name": "header-full-height",
-			"title": "Full Height Header",
-			"area": "header"
-		},
-		{
-			"name": "footer",
-			"title": "Footer",
-			"area": "footer"
-		}
-	]
+	}
 }
