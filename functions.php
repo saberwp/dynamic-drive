@@ -65,6 +65,8 @@ if ( ! function_exists( 'dynamicdrive_styles' ) ) :
 		// Enqueue theme stylesheet.
 		wp_enqueue_style( 'dynamic-drive-style' );
 
+		wp_enqueue_style( 'wp-editor-font' );
+
 	}
 
 endif;
@@ -105,7 +107,7 @@ if ( ! function_exists( 'dynamicdrive_get_font_face_styles' ) ) :
 	function dynamicdrive_get_font_face_styles() {
 
 		return "
-		@font-face{
+		@font-face {
 			font-family: 'Source Serif Pro';
 			font-weight: 200 900;
 			font-style: normal;
@@ -114,7 +116,7 @@ if ( ! function_exists( 'dynamicdrive_get_font_face_styles' ) ) :
 			src: url('" . get_theme_file_uri( 'assets/fonts/SourceSerif4Variable-Roman.ttf.woff2' ) . "') format('woff2');
 		}
 
-		@font-face{
+		@font-face {
 			font-family: 'Source Serif Pro';
 			font-weight: 200 900;
 			font-style: italic;
