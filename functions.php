@@ -52,6 +52,19 @@ if ( ! function_exists( 'dynamicdrive_styles' ) ) :
 		$theme_version = wp_get_theme()->get( 'Version' );
 
 		$version_string = is_string( $theme_version ) ? $theme_version : false;
+
+		// Register Dynamic Drive Pura, inspired by Tailwinds CSS.
+		wp_register_style(
+			'dynamic-drive-pura',
+			get_template_directory_uri() . '/css/pura.css',
+			array(),
+			$version_string
+		);
+
+		// Enqueue Pura.
+		wp_enqueue_style( 'dynamic-drive-pura' );
+
+		// Register main stylesheet.
 		wp_register_style(
 			'dynamic-drive-style',
 			get_template_directory_uri() . '/style.css',

@@ -21,7 +21,20 @@ class DivBlock extends \AcfEngine\Core\BlockType\BlockType {
   }
 
   public function callback( $block, $content, $isPreview, $postId ) {
-    print '<div>Div tag...</div>';
+
+    // Get and set CSS classes.
+    $classes = '';
+    if( $block['className'] ) {
+      $classes .= $block['className'];
+    }
+
+    // Set the block template.
+		$template = array();
+
+    // Render markup.
+    print '<div id="' . $block['id'] . '" class="' . $classes . '">';
+    print '<InnerBlocks template="' . esc_attr( wp_json_encode( $template ) ) . '" />';
+    print '</div>';
   }
 
 }
