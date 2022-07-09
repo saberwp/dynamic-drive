@@ -23,12 +23,7 @@ class FlexRender extends Render {
     print '<div class="' . $this->wrap . '">';
     print '<div class="' . $classes . '">';
 
-    // Children render.
-    if( ! empty( $this->children ) ) {
-      foreach( $this->children as $child ) {
-        $child->render();
-      }
-    }
+    $this->renderChildren();
 
     print '</div>';
     print '</div>';

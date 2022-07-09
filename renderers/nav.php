@@ -1,15 +1,17 @@
 <?php
 
-/* Rendering Class for Nav Blocks */
+/*
+ * Rendering Class for Nav Blocks
+ */
+ 
 class NavRender extends Render {
 
-  public $gap     = 'gap-2';
-  public $item;
-  public $classes = 'flex';
+  public $gap         = 'gap-2';
+  public $classes     = 'flex';
+  public $children    = array();
 
   public function __construct() {
 
-    $this->item = new stdClass;
 
   }
 
@@ -20,21 +22,7 @@ class NavRender extends Render {
 
     // Render nav.
     print '<ul class="' . $classes . '">';
-    $navItem = new NavItemRender();
-
-    // Set NavItem styles.
-
-    if( $this->item->fontWeight ) {
-      $navItem->fontWeight = $this->item->fontWeight;
-    }
-
-    if( $this->item->textColor ) {
-      $navItem->textColor = $this->item->textColor;
-    }
-
-    $navItem->render();
-    $navItem->render();
-    $navItem->render();
+    $this->renderChildren();
     print '</ul>';
 
   }

@@ -20,8 +20,13 @@ $def->button->text          = "Register Now";
 $def->button->borderColor   = 'border-white';
 $def->button->textColor     = 'text-white';
 $def->button->padding       = 'px-6 py-2';
-$def->nav                   = new stdClass;
-$def->nav->gap              = 'gap-3';
-$def->nav->item             = new stdClass;
-$def->nav->item->fontWeight = 'font-semibold';
-$def->nav->item->textColor  = 'text-white';
+
+/* Nav Blocks */
+$def->nav                       = new stdClass;
+$def->nav->gap                  = 'gap-3';
+
+/* Nav Item Blocks */
+$def->nav->item                 = new stdClass;
+$def->nav->item->fontWeight     = 'font-semibold';
+$def->nav->item->textColor      = 'text-white';
+$def->nav->item->hoverTextColor = 'hover:text-gray-300';

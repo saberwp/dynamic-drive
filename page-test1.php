@@ -1,7 +1,7 @@
 <?php
 
 require_once( get_template_directory() . '/renderers/render.php' );
-$blueprint = 'a52'; // a52 | lincoln | lincoln-s
+$blueprint = 'lincoln-s'; // a52 | lincoln | lincoln-s
 require_once( get_template_directory() . '/definitions/header/' . $blueprint .'.php' );
 
 /* Render function. */
@@ -24,5 +24,6 @@ function render( $def ) {
 </head>
 <body>
   <?php render( $def ); ?>
+  <div style="height: 800px">SCROLLER</div>
 </body>
 </html>

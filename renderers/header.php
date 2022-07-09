@@ -5,6 +5,7 @@ class HeaderRender extends Render {
 
   public $def; // Storage for the block definition.
   public $rows           = 1;
+  public $sticky         = false;
   public $padding        = 'py-0';
   public $margin         = 'mb-3';
   public $gap            = 'gap-3';
@@ -32,7 +33,12 @@ class HeaderRender extends Render {
       $this->rows = $this->def->rows;
     }
 
-    // Apply height class. 
+    // Setup header for sticky.
+    if( $this->def->sticky ) {
+      $this->addClass( 'sticky top-0 shadow-md mb-2' );
+    }
+
+    // Apply height class.
     if( $this->height !== 'auto' ) {
       $this->addClass( $this->height );
     }
@@ -41,9 +47,19 @@ class HeaderRender extends Render {
 
     if( $this->rows > 1 ) {
 
+      $navItem1 = new NavItemRender();
+      $navItem1->text = 'Register';
+      $navItem1->url  = 'register';
+
+      $navItem2 = new NavItemRender();
+      $navItem2->text = 'Login';
+      $navItem2->url  = 'login';
+
       $nav = new NavRender();
       $nav->addClass( 'justify-end' ); // Push nav to the right.
       $nav->addClass( 'flex-1' );
+      $nav->children[] = $navItem1;
+      $nav->children[] = $navItem2;
 
       $flex = new FlexRender();
       $flex->backgroundColor = 'bg-slate-50';
@@ -114,7 +130,42 @@ class HeaderRender extends Render {
       $nav->gap = $def->nav->gap;
     }
 
-    /* Nav Items. */
+    /*
+     * Nav Items
+     */
+
+    // Inherit NavItem Text Color style.
+    $navItemTextColor = NavItemRender::default( 'textColor' );
+    if( isset( $this->def->nav->item->textColor ) ) {
+      $navItemTextColor = $this->def->nav->item->textColor;
+    }
+
+    // Inherit NavItem Hover Text Color style.
+    $navItemHoverTextColor = NavItemRender::default( 'hoverTextColor' );
+    if( isset( $this->def->nav->item->hoverTextColor ) ) {
+      $navItemHoverTextColor = $this->def->nav->item->hoverTextColor;
+    }
+
+    $navItem1                 = new NavItemRender();
+    $navItem1->text           = 'Shop';
+    $navItem1->url            = 'shop';
+    $navItem1->textColor      = $navItemTextColor;
+    $navItem1->hoverTextColor = $navItemHoverTextColor;
+    $nav->children[]          = $navItem1;
+
+    $navItem2            = new NavItemRender();
+    $navItem2->text      = 'Products';
+    $navItem2->url       = 'products';
+    $navItem2->textColor = $navItemTextColor;
+    $navItem2->hoverTextColor = $navItemHoverTextColor;
+    $nav->children[]          = $navItem2;
+
+    $navItem3            = new NavItemRender();
+    $navItem3->text      = 'Company';
+    $navItem3->url       = 'company';
+    $navItem3->textColor      = $navItemTextColor;
+    $navItem3->hoverTextColor = $navItemHoverTextColor;
+    $nav->children[]     = $navItem3;
 
     // Nav Item Font Weight.
     if( $def->nav->item->fontWeight ) {
