@@ -13,7 +13,7 @@ class ButtonRender extends Render {
   public $backgroundColor      = 'bg-transparent';
   public $hoverBackgroundColor = 'hover:bg-slate-500';
   public $hoverTextColor       = 'hover:text-white';
-  public $classes      = 'ml-auto border border-black';
+  public $classes      = 'border border-black';
 
   public function render() {
 

@@ -15,12 +15,96 @@ $def->content               = new stdClass();
 $def->content->gap          = 'gap-4';
 $def->content->padding      = 'py-8';
 $def->logo                  = new stdClass;
-$def->logo->fill            = 'fill-white';
+$def->logo->fill            = 'fill-zinc-200';
 $def->button                = new stdClass;
 $def->button->text          = "Register Now";
-$def->button->borderColor   = 'border-white';
+$def->button->borderColor   = 'border-fuchsia-300';
 $def->button->textColor     = 'text-white';
 $def->button->padding       = 'px-6 py-2';
+
+/* Define Content Rows. */
+$def->content->rows = array();
+
+// Add Flex Row.
+$row1 = new FlexRender();
+$row1->backgroundColor = 'bg-none';
+$row1->addClass( 'justify-between' );
+
+// Add Nav.
+$nav = new NavRender();
+
+// Setup Nav Item Styles.
+$navItemTextColor         = 'text-fuchsia-500';
+$navItemHoverTextColor    = 'hover:text-fuchsia-200';
+
+// Add Nav Items.
+$navItem1                 = new NavItemRender();
+$navItem1->text           = 'Shop';
+$navItem1->url            = 'shop';
+$navItem1->textColor      = $navItemTextColor;
+$navItem1->hoverTextColor = $navItemHoverTextColor;
+$nav->children[]          = $navItem1;
+
+$navItem2            = new NavItemRender();
+$navItem2->text      = 'Products';
+$navItem2->url       = 'products';
+$navItem2->textColor = $navItemTextColor;
+$navItem2->hoverTextColor = $navItemHoverTextColor;
+$nav->children[]          = $navItem2;
+
+$navItem3            = new NavItemRender();
+$navItem3->text      = 'Company';
+$navItem3->url       = 'company';
+$navItem3->textColor      = $navItemTextColor;
+$navItem3->hoverTextColor = $navItemHoverTextColor;
+$nav->children[]     = $navItem3;
+
+// Add Nav to Row.
+$row1->children[] = $nav;
+
+// Add Logo.
+$logo = new LogoRender();
+$logo->fill = 'fill-white';
+$row1->children[] = $logo;
+
+// Add Button.
+$button              = new ButtonRender();
+$button->text        = 'Open Account';
+$button->textColor   = 'text-fuchsia-500';
+$button->borderColor = 'border-fuchsia-500';
+$button->addClass( 'rounded-md' );
+$row1->children[]    = $button;
+
+// Add extra bottom margin under row.
+$row1->addClass( 'mb-12' );
+
+// Add Row to Header.
+$def->content->rows[] = $row1;
+
+/* Second Row */
+/*************************/
+$row2 = new FlexRender();
+$row2->backgroundColor = 'bg-black/30';
+$row2->addClass( 'justify-between' );
+$row2->padding = 'py-20 px-0';
+
+// Add SVG image.
+$svg              = new SvgRender();
+$row2->children[] = $svg;
+
+// Add Copy text.
+$copy             = new CopyRender();
+$copy->addClass( 'max-w-md' );
+$copy->addClass( 'text-fuchsia-700' );
+$copy->addClass( 'font-bold' );
+$copy->addClass( 'text-3xl' );
+$copy->addClass( 'text-center' );
+$row2->children[] = $copy;
+
+$gradient          = new GradientRender();
+$row2->children[] = $gradient;
+
+$def->content->rows[] = $row2;
 
 /* Nav Blocks */
 $def->nav                       = new stdClass;
@@ -29,7 +113,7 @@ $def->nav->gap                  = 'gap-3';
 /* Nav Item Blocks */
 $def->nav->item                 = new stdClass;
 $def->nav->item->fontWeight     = 'font-semibold';
-$def->nav->item->textColor      = 'text-white';
+$def->nav->item->textColor      = 'text-fuchsia-500';
 $def->nav->item->hoverTextColor = 'hover:text-gray-300';
 
 /* Add Full Height Support */

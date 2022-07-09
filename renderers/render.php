@@ -6,6 +6,9 @@ require_once( get_template_directory() . '/renderers/button.php' );
 require_once( get_template_directory() . '/renderers/logo.php' );
 require_once( get_template_directory() . '/renderers/nav.php' );
 require_once( get_template_directory() . '/renderers/nav-item.php' );
+require_once( get_template_directory() . '/renderers/svg.php' );
+require_once( get_template_directory() . '/renderers/copy.php' );
+require_once( get_template_directory() . '/renderers/gradient.php' );
 require_once( get_template_directory() . '/renderers/footer.php' );
 
 class Render {

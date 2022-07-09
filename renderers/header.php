@@ -18,9 +18,6 @@ class HeaderRender extends Render {
 
   public function render() {
 
-    // Get the main content child (a flex block).
-    $this->children[] = $this->content( $this->def );
-
     $this->addClass( $this->margin );
     $this->addClass( $this->padding );
     $this->addClass( $this->gap );
@@ -49,7 +46,7 @@ class HeaderRender extends Render {
     // $this->addClass( 'bg-gradient-to-r from-purple-500 to-pink-500' );
 
     // Add image background.
-    $this->addClass( 'bg-[url(\'http://bigbrains.local/wp-content/themes/dynamic-drive/assets/images/lion-head.jpg\')]' );
+    $this->addClass( 'bg-[url(\'http://bigbrains.local/wp-content/themes/dynamic-drive/assets/images/lion-head.png\')]' );
     $this->addClass( 'bg-no-repeat' );
     $this->addClass( 'bg-cover' );
     $this->addClass( 'bg-center' );
@@ -66,35 +63,57 @@ class HeaderRender extends Render {
 
     print '<header id="' . $this->id . '" class="' . $classes . '">'; // Opening header.
 
+    // First row.
     if( $this->rows > 1 ) {
 
-      $navItem1 = new NavItemRender();
-      $navItem1->text = 'Register';
-      $navItem1->url  = 'register';
+      if( isset( $this->def->content->rows ) ) {
 
-      $navItem2 = new NavItemRender();
-      $navItem2->text = 'Login';
-      $navItem2->url  = 'login';
+        $this->def->content->rows[0]->render();
 
-      $nav = new NavRender();
-      $nav->addClass( 'justify-end' ); // Push nav to the right.
-      $nav->addClass( 'flex-1' );
-      $nav->children[] = $navItem1;
-      $nav->children[] = $navItem2;
+      } else {
 
-      $flex = new FlexRender();
-      $flex->backgroundColor = 'bg-slate-50';
-      $flex->children[] = $nav;
-      $flex->render();
+        // Default upper header row.
+        $navItem1 = new NavItemRender();
+        $navItem1->text = 'Register';
+        $navItem1->url  = 'register';
 
-    }
+        $navItem2 = new NavItemRender();
+        $navItem2->text = 'Login';
+        $navItem2->url  = 'login';
 
+        $nav = new NavRender();
+        $nav->addClass( 'justify-end' ); // Push nav to the right.
+        $nav->addClass( 'flex-1' );
+        $nav->children[] = $navItem1;
+        $nav->children[] = $navItem2;
 
+        $flex = new FlexRender();
+        $flex->backgroundColor = 'bg-slate-50';
+        $flex->children[] = $nav;
+        $flex->render();
 
-    if( ! empty( $this->children ) ) {
-      foreach( $this->children as $child ) {
-        $child->render();
       }
+
+    } /* Render first row or upper row. */
+
+
+    // Second row.
+
+    if( isset( $this->def->content->rows ) && count( $this->def->content->rows ) >= 2 ) {
+
+      $this->def->content->rows[1]->render();
+
+    } else {
+
+      // Get the main content child (a flex block).
+      $this->children[] = $this->content( $this->def );
+
+      if( ! empty( $this->children ) ) {
+        foreach( $this->children as $child ) {
+          $child->render();
+        }
+      }
+
     }
 
     print '</header>';
