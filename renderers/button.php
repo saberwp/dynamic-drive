@@ -10,8 +10,11 @@ class ButtonRender extends Render {
   public $borderRadius = 'rounded-none';
   public $fontWeight   = 'font-medium';
   public $padding      = 'p-2';
+  public $backgroundColor      = 'bg-transparent';
+  public $hoverBackgroundColor = 'hover:bg-slate-500';
+  public $hoverTextColor       = 'hover:text-white';
   public $classes      = 'ml-auto border border-black';
-  
+
   public function render() {
 
     // Add classes.
@@ -20,6 +23,8 @@ class ButtonRender extends Render {
     $this->addClass( $this->borderColor );
     $this->addClass( $this->fontWeight );
     $this->addClass( $this->padding );
+    $this->addClass( $this->hoverBackgroundColor );
+    $this->addClass( $this->hoverTextColor );
     $classes = $this->getClasses();
 
     // Set $url.

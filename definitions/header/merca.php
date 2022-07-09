@@ -1,10 +1,10 @@
 <?php
 
 $def = new stdClass;
-$def->key                   = 'a52';
-$def->title                 = "Header 1";
-$def->description           = "This is a basic header with 1 row.";
-$def->rows                  = 2; // Total rows in the header.
+$def->key                   = 'merca';
+$def->title                 = "Merca";
+$def->description           = "Full page hero header.";
+$def->rows                  = 3; // Total rows in the header.
 $def->logo                  = 'http://bigbrains.local/wp-content/uploads/2022/07/Group-1.png';
 $def->background            = new stdClass;
 $def->background->color     = 'bg-purple-800';

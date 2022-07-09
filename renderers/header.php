@@ -3,6 +3,7 @@
 /* Rendering Class for Header Blocks */
 class HeaderRender extends Render {
 
+  public $id             = 'site-header';
   public $def; // Storage for the block definition.
   public $rows           = 1;
   public $sticky         = false;
@@ -45,6 +46,8 @@ class HeaderRender extends Render {
 
     $classes = $this->getClasses();
 
+    print '<header id="' . $this->id . '" class="' . $classes . '">'; // Opening header.
+
     if( $this->rows > 1 ) {
 
       $navItem1 = new NavItemRender();
@@ -68,7 +71,7 @@ class HeaderRender extends Render {
 
     }
 
-    print '<header class="' . $classes . '">'; // Opening header.
+
 
     if( ! empty( $this->children ) ) {
       foreach( $this->children as $child ) {

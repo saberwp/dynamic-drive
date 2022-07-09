@@ -8,6 +8,7 @@
  */
 
 $def = new stdClass;
+$def->key          = 'lincoln-s';
 $def->title        = "Lincoln S Header";
 $def->description  = "This is a basic header with 1 row and it adds stickiness.";
 $def->rows         = 1; // Total rows in the header.

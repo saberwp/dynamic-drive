@@ -1,7 +1,7 @@
 <?php
 
 $def = new stdClass;
-$def->key                   = 'a52';
+$def->key                   = 'a52-s';
 $def->title                 = "Header 1";
 $def->description           = "This is a basic header with 1 row.";
 $def->rows                  = 2; // Total rows in the header.
@@ -13,7 +13,7 @@ $def->contentMaxWidth       = 'max-w-screen-lg';
 $def->contentWrap           = new stdClass();
 $def->content               = new stdClass();
 $def->content->gap          = 'gap-4';
-$def->content->padding      = 'py-8';
+$def->content->padding      = 'py-4';
 $def->logo                  = new stdClass;
 $def->logo->fill            = 'fill-white';
 $def->button                = new stdClass;
@@ -31,3 +31,6 @@ $def->nav->item                 = new stdClass;
 $def->nav->item->fontWeight     = 'font-semibold';
 $def->nav->item->textColor      = 'text-white';
 $def->nav->item->hoverTextColor = 'hover:text-gray-300';
+
+/* Sticky Header */
+$def->sticky = true;

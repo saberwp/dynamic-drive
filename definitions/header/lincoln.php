@@ -8,6 +8,7 @@
  */
 
 $def = new stdClass;
+$def->key          = 'lincoln';
 $def->title        = "Header 1";
 $def->description  = "This is a basic header with 1 row.";
 $def->rows         = 1; // Total rows in the header.
