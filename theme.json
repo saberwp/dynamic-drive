@@ -8,20 +8,6 @@
 				"page",
 				"post"
 			]
-		},
-		{
-			"name": "single-doc-page",
-			"title": "Doc Page Single",
-			"postTypes": [
-				"doc-page"
-			]
-		},
-		{
-			"name": "single-demo",
-			"title": "Demo Single",
-			"postTypes": [
-				"demo"
-			]
 		}
 	],
 	"settings": {
