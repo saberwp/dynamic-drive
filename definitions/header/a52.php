@@ -25,7 +25,8 @@ $def->contentCentered      = true;
 $def->contentMaxWidth      = 'max-w-screen-lg';
 $def->contentWrap          = new stdClass();
 $def->contentWrap->padding = 'py-6';
-$def->contentWrap->gap     = 'gap-4';
+$def->content              = new stdClass();
+$def->content->gap         = 'gap-4';
 
 $def->logo                 = new stdClass;
 $def->logo->fill           = 'fill-white';

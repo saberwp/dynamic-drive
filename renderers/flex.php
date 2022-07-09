@@ -7,6 +7,7 @@ class FlexRender extends Render {
   public $backgroundColor = 'bg-gray-200';
   public $children        = array();
   public $wrap; // Wrapping classes.
+  public $classes         = 'flex items-center';
 
   public function render() {
 
@@ -17,6 +18,8 @@ class FlexRender extends Render {
 
     print '<div class="' . $this->wrap . '">';
     print '<div class="' . $classes . '">';
+
+    // Children render.
     if( ! empty( $this->children ) ) {
       foreach( $this->children as $child ) {
         $child->render();
