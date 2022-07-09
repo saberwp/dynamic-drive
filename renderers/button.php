@@ -1,9 +1,5 @@
 <?php
 
-
-/* @TODO Move me!! */
-class Render {}
-
 /* Rendering Class for Button Blocks */
 class ButtonRender extends Render {
 
@@ -15,7 +11,7 @@ class ButtonRender extends Render {
   public $fontWeight   = 'font-medium';
   public $padding      = 'p-2';
   public $classes      = 'ml-auto border border-black';
-
+  
   public function render() {
 
     // Add classes.
@@ -35,14 +31,6 @@ class ButtonRender extends Render {
     print '</a>';
     print '</button>';
 
-  }
-
-  public function addClass( $classTitle ) {
-    $this->classes .= ' ' . $classTitle;
-  }
-
-  public function getClasses() {
-    return $this->classes;
   }
 
 }

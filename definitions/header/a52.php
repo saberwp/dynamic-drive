@@ -24,8 +24,11 @@ $def->background->color    = 'bg-purple-800';
 $def->contentCentered      = true;
 $def->contentMaxWidth      = 'max-w-screen-lg';
 $def->contentWrap          = new stdClass();
-$def->contentWrap->padding = 'py-3';
+$def->contentWrap->padding = 'py-6';
 $def->contentWrap->gap     = 'gap-4';
+
+$def->logo                 = new stdClass;
+$def->logo->fill           = 'fill-white';
 
 // Button.
 $def->button               = new stdClass;
@@ -37,5 +40,6 @@ $def->button->padding      = 'px-6 py-2';
 // Nav.
 $def->nav = new stdClass;
 $def->nav->gap = 'gap-3';
-$def->nav->item = new stdClass;
+$def->nav->item             = new stdClass;
 $def->nav->item->fontWeight = 'font-semibold';
+$def->nav->item->textColor  = 'text-white';
