@@ -3,7 +3,9 @@
 class FlexRender extends Render {
 
   public $maxWidth        = 'max-w-screen-lg';
+  public $padding         = 'py-2';
   public $margin          = 'mx-auto';
+  public $gap             = 'gap-3';
   public $backgroundColor = 'bg-gray-200';
   public $children        = array();
   public $wrap; // Wrapping classes.
@@ -13,6 +15,8 @@ class FlexRender extends Render {
 
     $this->addClass( $this->maxWidth );
     $this->addClass( $this->margin );
+    $this->addClass( $this->padding );
+    $this->addClass( $this->gap );
     $this->addClass( $this->backgroundColor, 'wrap' );
     $classes = $this->getClasses();
 
