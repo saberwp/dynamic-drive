@@ -7,6 +7,7 @@ class HeaderRender extends Render {
   public $def; // Storage for the block definition.
   public $rows           = 1;
   public $sticky         = false;
+  public $fullHeight     = false;
   public $padding        = 'py-0';
   public $margin         = 'mb-3';
   public $gap            = 'gap-3';
@@ -38,6 +39,23 @@ class HeaderRender extends Render {
     if( $this->def->sticky ) {
       $this->addClass( 'sticky top-0 shadow-md mb-2' );
     }
+
+    // Setup header for full height.
+    if( $this->def->fullHeight ) {
+      $this->addClass( 'h-screen' );
+    }
+
+    // Add Gradient Background.
+    // $this->addClass( 'bg-gradient-to-r from-purple-500 to-pink-500' );
+
+    // Add image background.
+    $this->addClass( 'bg-[url(\'http://bigbrains.local/wp-content/themes/dynamic-drive/assets/images/lion-head.jpg\')]' );
+    $this->addClass( 'bg-no-repeat' );
+    $this->addClass( 'bg-cover' );
+    $this->addClass( 'bg-center' );
+
+    // Add parallax support.
+    // $this->addClass( 'bg-fixed' );
 
     // Apply height class.
     if( $this->height !== 'auto' ) {

@@ -31,3 +31,6 @@ $def->nav->item                 = new stdClass;
 $def->nav->item->fontWeight     = 'font-semibold';
 $def->nav->item->textColor      = 'text-white';
 $def->nav->item->hoverTextColor = 'hover:text-gray-300';
+
+/* Add Full Height Support */
+$def->fullHeight = true;
