@@ -13,7 +13,8 @@ class ButtonRender extends Render {
   public $backgroundColor      = 'bg-transparent';
   public $hoverBackgroundColor = 'hover:bg-slate-500';
   public $hoverTextColor       = 'hover:text-white';
-  public $classes      = 'border border-black';
+  public $hasIcon      = false;
+  public $icon; // SvgRender.
 
   public function render() {
 
@@ -27,14 +28,20 @@ class ButtonRender extends Render {
     $this->addClass( $this->hoverTextColor );
     $classes = $this->getClasses();
 
+    // Setup icon rendering.
+    if( $this->hasIcon ) {
+      $this->children[] = $this->icon;
+    }
+
     // Set $url.
     $url = site_url();
 
-    print '<button class="' . $classes . '">';
     print '<a href="' . $url . '">';
+    print '<button class="' . $classes . '">';
+    $this->renderChildren();
     print $this->text;
-    print '</a>';
     print '</button>';
+    print '</a>';
 
   }
 

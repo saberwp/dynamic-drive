@@ -106,6 +106,37 @@ $row2->children[] = $gradient;
 
 $def->content->rows[] = $row2;
 
+// Row 3.
+$row3 = new FlexRender();
+$row3->backgroundColor = 'bg-none';
+$row3->addClass( 'justify-between' );
+$row3->addClass('h-20');
+$def->content->rows[] = $row3;
+
+// Make Row 3, Col 1.
+$copy = new CopyRender();
+$copy->text = 'Legal Notices';
+$copy->addClass( 'text-zinc-200' );
+$copy->addClass( 'font-semibold' );
+$row3->children[] = $copy;
+
+// Make Row 3, Col 2.
+$button           = new ButtonRender();
+$button->text     = __( 'LEARN MORE', 'acf-engine' );
+$button->addClass( 'border-none' );
+$row3->children[] = $button;
+
+// Make Row 3, Col 3.
+$button                       = new ButtonRender();
+$button->text                 = __( 'Client Portal', 'acf-engine' );
+$button->textColor            = 'text-zinc-200';
+$button->hoverBackgroundColor = 'hover:bg-none';
+$button->hasIcon              = true;
+$button->icon                 = new SvgRender();
+$button->icon->width          = 'w-8';
+$button->addClass( 'flex flex-col justify-center items-center gap-0' );
+$row3->children[] = $button;
+
 /* Nav Blocks */
 $def->nav                       = new stdClass;
 $def->nav->gap                  = 'gap-3';

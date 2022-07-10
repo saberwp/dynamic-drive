@@ -2,9 +2,15 @@
 
 class CopyRender extends Render {
 
+  public $text = '';
+
   public function render() {
 
-    $text = 'Wealth management you can trust, from <span class="text-zinc-200">industry leaders.</span>';
+    if( $this->text ) {
+      $text = $this->text;
+    } else {
+      $text = 'Wealth management you can trust, from <span class="text-zinc-200">industry leaders.</span>';
+    }
 
     $classes = $this->getClasses();
 

@@ -1,5 +1,138 @@
 <?php
 
+if ( function_exists( 'register_block_pattern_category' ) ) {
+    register_block_pattern_category(
+      'dynamic',
+      array( 'label' => __( 'Dynamic', 'dynamic-drive' ) )
+   );
+}
+
+// Route for the Block Generator.
+add_action( 'rest_api_init', function () {
+  register_rest_route( 'acfengine/v1', 'generate', array(
+    'methods' => 'GET',
+    'callback' => 'generate_pattern',
+  ) );
+} );
+
+
+/**
+ * Plugin Generation
+ */
+class PluginGenerator {
+
+	public function blockPatternRegistration() {
+
+		$contents = '';
+		$contents .= '$pattern_properties = array(';
+		$contents .= "\n\t";
+		$contents .= "'title' => 'Pattern 3',";
+		$contents .= "\n\t";
+
+		/*
+
+			Block "className" set in the block markup is created by the element classes from the generator,
+			either the blueprint or the classes chosen by the user customizations.
+
+      @IDEA - It would be nice to map classes to elements in an automated way?
+
+		*/
+
+		$headerClasses = 'mb-3 py-0 gap-3';
+
+
+		$markup = '<!-- wp:acf/acfg-header {"id":"block_62cb2a0ebf753","name":"acf/acfg-header","className":"' . $headerClasses . '","data":{"field_624664fa30c34":"rgb(186,167,24)","field_6246674274d96":"","field_624ea919eea29":{"field_624ea8dceea27":"200","field_624ea8f0eea28":"px"},"field_62689445bc7f9":"1140","field_6247b97e3655e":"lato","field_6246685c00985":"25","field_6247b4aeb2f01":"0"},"align":"","mode":"preview"} -->
+<!-- wp:paragraph -->
+<p>Test 235</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Test 9182</h2>
+<!-- /wp:heading -->
+<!-- /wp:acf/acfg-header -->';
+
+		$contents .= "'content' => '" . $markup . "',";
+		$contents .= "\n";
+		$contents .= ');';
+		$contents .= "\n\n";
+		$contents .= 'register_block_pattern( \'acf-engine/pattern3\', $pattern_properties );';
+		$contents .= "\n\n";
+		return $contents;
+
+	}
+
+}
+
+function generate_pattern() {
+
+	$data = new stdClass;
+
+	$plugin = new PluginGenerator();
+	$plugin->name = 'pattern3';
+	$plugin->uri  = 'https://acfengine.com/';
+
+	/* Plugin Definition Generate. */
+	$contents = '';
+	$contents .= '<?php';
+	$contents .= "\n\n";
+	$contents .= "/**";
+	$contents .= "\n * ";
+	$contents .= 'Plugin Name: ' . $plugin->name;
+	$contents .= "\n * ";
+	$contents .= 'Plugin URI: ' . $plugin->uri;
+	$contents .= "\n * ";
+	$contents .= "\n */";
+	$contents .= "\n\n";
+
+	// Get Block Pattern Registration.
+	$contents .= $plugin->blockPatternRegistration();
+
+	$basepath = WP_CONTENT_DIR . '/uploads/acfengine/generator/';
+
+	// Make directory for plugin.
+	$dir_path = $basepath . $plugin->name;
+	if( ! is_dir( $dir_path ) ) {
+		mkdir( $dir_path );
+	}
+
+	$filepath =  $dir_path . '/' . $plugin->name . '.php';
+	file_put_contents( $filepath, $contents );
+
+	// Enter the name to creating zipped directory
+	$zip_path = $basepath . '/' . $plugin->name . '.zip';
+
+	// Create new zip class
+	$zip = new ZipArchive;
+
+	if( $zip->open( $zip_path, ZipArchive::CREATE ) === true ) {
+
+	  $dir = opendir( $dir_path );
+
+	  while( $file = readdir( $dir ) ) {
+
+	    if( is_file( $dir_path . '/' . $file ) ) {
+	      $zip->addFile( $dir_path . '/' . $file, $file );
+	    }
+
+	  }
+
+	  $zip->close();
+
+	}
+
+
+	$data->plugin = $plugin;
+	$data->dir    = WP_CONTENT_DIR;
+	$data->download = 'http://google.com/plugin';
+	$response = new WP_REST_Response( $data );
+	return $response;
+
+}
+
 add_filter( 'template_include', function( $template ) {
 	return $template;
 });

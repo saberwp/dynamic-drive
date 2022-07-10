@@ -30,11 +30,20 @@ function render( $blueprints ) {
 
   foreach( $blueprints as $blueprint ) {
 
+
+    // Load the blueprint.
     require_once( get_template_directory() . '/definitions/header/' . $blueprint['key'] .'.php' );
+
+    // Render the header.
     $header = new HeaderRender();
     $header->id  = 'header-' . $def->key;
     $header->def = $def;
     $header->render();
+
+    // Render the JSON version of the blueprint definition.
+    print '<div id="header-def-'. $def->key .'" style="display:none;">';
+    print json_encode( $def );
+    print '</div>';
 
   }
 
@@ -87,6 +96,10 @@ function render( $blueprints ) {
         <li>Export your header for use on your WordPress website.</li>
         <li>Install the exported header plugin as you would any other WordPress plugin.</li>
       </ol>
+
+      <h2 class="font-bold text-md my-4">Converting Generator Classes Into Block Classes</h2>
+      <p>Style information in the form of Tailwinds CSS classes are used here in the generator. These initially come from the design blueprint. They are then edited as you customize the design using the generator configuration settings.</p>
+
     </div>
     <!-- ./ #docs Docs -->
 
@@ -100,34 +113,59 @@ function render( $blueprints ) {
       const blueprintId = blueprintSelector.value;
       const canvas   = document.getElementById( 'canvas' );
 
-      const currentArray = document.getElementsByClassName( 'editor-preview-selected' );
+      const currentArray = document.querySelectorAll( '.editor-preview-selected' );
+
+      console.log( currentArray )
 
       if( currentArray.length > 0 ) {
 
-        const current = currentArray[0];
-        current.classList.remove( 'editor-preview-selected' );
-        current.style.display = 'none';
+        for ( let el of currentArray ) {
+
+          console.log('removing class and hiding el')
+          console.log( el )
+
+          el.classList.remove( 'editor-preview-selected' );
+          el.style.display = 'none';
+        }
 
       }
 
-
-
+      // Show the selected header.
       const selected = document.getElementById( 'header-' + blueprintId );
       selected.style.display = 'block';
-
-
       selected.classList.add( 'editor-preview-selected' );
 
-
+      // Show the selected header definition JSON.
+      const selectedDef = document.getElementById( 'header-def-' + blueprintId );
+      selectedDef.style.display = 'block';
+      selectedDef.classList.add( 'editor-preview-selected' );
 
     });
+
+    /* Export */
+
+    const exportButton = document.getElementById('export-button');
+    exportButton.addEventListener( 'click', function( e ) {
+
+      console.log('exporting...')
+
+      fetch('http://bigbrains.local/wp-json/acfengine/v1/generate/')
+        .then( response => response.json() )
+        .then( data => console.log( data ) );
+      });
 
   </script>
 
   <style>
+
+    .flex svg {
+      max-width: 100%;
+    }
+
     <?php
       foreach( $blueprints as $blueprint ) {
         print '#header-' . $blueprint['key'] . ' { display: none; }';
+        print '#header-def-' . $blueprint['key'] . ' { display: none; }';
       }
     ?>
   </style>

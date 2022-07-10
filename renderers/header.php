@@ -116,6 +116,11 @@ class HeaderRender extends Render {
 
     }
 
+    // Third row.
+    if( isset( $this->def->content->rows ) && count( $this->def->content->rows ) >= 3 ) {
+      $this->def->content->rows[2]->render();
+    }
+
     print '</header>';
 
   }
